@@ -23,6 +23,8 @@ html
             var headerUsers='Users';
             var headerSignup='Signup';
             var headerLogin='Login';
+            var headerMe='Me';
+            var headerUpdatepass='Update password';
             var initHash='#albums';
 
             document.addEventListener('DOMContentLoaded', function(event){
@@ -50,6 +52,30 @@ html
                         header.innerText=headerLogin;
                         child=document.createElement('LI');
                         childTxt=document.createTextNode('Login');
+                        child.appendChild(childTxt);
+                        items.appendChild(child);
+                    },
+                    'me': function() {
+                        items=document.getElementById(itemsId);
+                        for(;items.hasChildNodes();){
+                            items.removeChild(items.lastChild);
+                        }
+                        header=document.getElementById(headerId);
+                        header.innerText=headerMe;
+                        child=document.createElement('LI');
+                        childTxt=document.createTextNode('Me');
+                        child.appendChild(childTxt);
+                        items.appendChild(child)
+                    },
+                    'updatepass': function(){
+                        items=document.getElementById(itemsId);
+                        for(;items.hasChildNodes();){
+                            items.removeChild(items.lastChild);
+                        }
+                        header=document.getElementById(headerId);
+                        header.innerText=headerUpdatepass;
+                        child=document.createElement('LI');
+                        childTxt=document.createTextNode('Update password');
                         child.appendChild(childTxt);
                         items.appendChild(child);
                     },
@@ -120,6 +146,12 @@ html
                 div.col-2
                     div.card.is-borderless
                         a(href='#login') Log in
+                div.col-2
+                    div.card.is-borderless
+                        a(href='#me') Me
+                div.col-2
+                    div.card.is-borderless
+                        a(href='#updatepass') Update password
                 div.col-2
                     div.card.is-borderless
                         a(href='#albums') Albums
