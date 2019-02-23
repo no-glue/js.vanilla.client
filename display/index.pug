@@ -30,6 +30,7 @@ html
             var listDivId='list';
             var listDiv=null;
             var classHidden='is-hidden';
+            var doHideClass='dohide';
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -153,7 +154,7 @@ html
                 div.col-2
                     div.card.is-borderless
                         a(href='#users') Users
-            div#list.is-hidden.row
+            div#list.row
                 div.col-12
                     ol#items
             div#signupform.row
