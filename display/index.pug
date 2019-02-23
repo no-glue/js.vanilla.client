@@ -65,7 +65,8 @@ html
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
-                        items.classList.remove(addHideClass);
+                        listDiv=document.getElementById(listDivId);
+                        listDiv.classList.remove(addHideClass);
                         header=document.getElementById(headerId);
                         header.innerText=headerMe;
                         child=document.createElement('LI');
