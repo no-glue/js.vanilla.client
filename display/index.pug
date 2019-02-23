@@ -96,6 +96,7 @@ html
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
+                        listDiv.classList.remove(addHideClass);
                         header=document.getElementById(headerId);
                         header.innerText=headerAlbums;
                         request.onreadystatechange=function(){
@@ -120,6 +121,7 @@ html
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
+                        listDiv.classList.remove(addHideClass);
                         header=document.getElementById(headerId);
                         header.innerText=headerUsers;
                         request.onreadystatechange=function(){
