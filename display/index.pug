@@ -22,6 +22,7 @@ html
             var headerAlbums='Albums';
             var headerUsers='Users';
             var headerSignup='Signup';
+            var headerLogin='Login';
             var initHash='#albums';
 
             document.addEventListener('DOMContentLoaded', function(event){
@@ -40,7 +41,18 @@ html
                         child.appendChild(childTxt);
                         items.appendChild(child);
                     },
-                    'login': function(){},
+                    'login': function(){
+                        items=document.getElementById(itemsId);
+                        for(;items.hasChildNodes();){
+                            items.removeChild(items.lastChild);
+                        }
+                        header=document.getElementById(headerId);
+                        header.innerText=headerLogin;
+                        child=document.createElement('LI');
+                        childTxt=document.createTextNode('Login');
+                        child.appendChild(childTxt);
+                        items.appendChild(child);
+                    },
                     'albums': function(){
                         request.open('GET',endpoints['albums']);
                         request.send();
@@ -105,6 +117,9 @@ html
                 div.col-2
                     div.card.is-borderless
                         a(href='#signup') Signup
+                div.col-2
+                    div.card.is-borderless
+                        a(href='#login') Log in
                 div.col-2
                     div.card.is-borderless
                         a(href='#albums') Albums
