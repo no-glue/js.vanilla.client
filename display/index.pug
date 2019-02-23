@@ -1,0 +1,99 @@
+html
+    head
+        title= title
+        link(rel='stylesheet',href='https://unpkg.com/chota@latest').
+        link(rel='stylesheet',href='/css/custom.css').
+        script(type='text/javascript',src='/js/routie.min.js').
+        script(type='text/javascript').
+            var endpoints={
+                "albums":"https://jsonplaceholder.typicode.com/albums",
+                "users":"https://jsonplaceholder.typicode.com/users"
+            };
+            var request=new XMLHttpRequest();
+            var limit=17;
+            var parsed=null;
+            var i=0;
+            var itemsId='items';
+            var items=null;
+            var child=null;
+            var childTxt=null;
+            var headerId='header';
+            var header=null;
+            var headerAlbums='Albums';
+            var headerUsers='Users';
+            var initHash='#albums';
+
+            document.addEventListener('DOMContentLoaded', function(event){
+                window.location.hash=initHash;
+                console.log('document loaded');
+                routie({
+                    'albums': function(){
+                        request.open('GET',endpoints['albums']);
+                        request.send();
+                        items=document.getElementById(itemsId);
+                        for(;items.hasChildNodes();){
+                            items.removeChild(items.lastChild);
+                        }
+                        header=document.getElementById(headerId);
+                        header.innerText=headerAlbums;
+                        request.onreadystatechange=function(){
+                            if(this.status==200 && this.readyState==4){
+                                parsed=JSON.parse(request.responseText);
+                                for(i=0;i<limit && i<parsed.length;i++){
+                                    child=document.createElement('LI');
+                                    childTxt=document.createTextNode('Title - '+parsed[i].title);
+                                    child.appendChild(childTxt);
+                                    items.appendChild(child);
+                                    console.log(parsed[i]);
+                                }
+                            }
+                        }
+                    },
+                    'users': function(){
+                        request.open('GET',endpoints['users']);
+                        request.send();
+                        items=document.getElementById(itemsId);
+                        for(;items.hasChildNodes();){
+                            items.removeChild(items.lastChild);
+                        }
+                        header=document.getElementById(headerId);
+                        header.innerText=headerUsers;
+                        request.onreadystatechange=function(){
+                            if(this.status==200 && this.readyState==4){
+                                parsed=JSON.parse(request.responseText);
+                                for(i=0;i<limit && i<parsed.length;i++){
+                                    child=document.createElement('LI');
+                                    childTxt=document.createTextNode(
+                                        'Id - '+parsed[i].id+', Name - '
+                                        + parsed[i].name + ', Address - ' +
+                                        parsed[i].address.street + ', ' + 
+                                        parsed[i].address.suite + ', ' +
+                                        parsed[i].address.city
+                                    );
+                                    child.appendChild(childTxt);
+                                    items.appendChild(child);
+                                    console.log(parsed[i]);
+                                }
+                                console.log(request.responseText);
+                            }
+                        }
+                    }
+                });
+            });
+
+    body
+        div
+            div.row
+                div.col-12
+                    div.card.is-borderless
+                        h1#header= message
+            div.row
+                div.col-2
+                    div.card.is-borderless
+                        a(href='#albums') Albums
+                div.col-2
+                    div.card.is-borderless
+                        a(href='#users') Users
+            div.row
+                div.col-12
+                    ol#items
