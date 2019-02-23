@@ -29,3 +29,11 @@ app.listen(port,function(){
 // m. just extract and use node index.js
 
 // TODO DONE git add client js
+// TODO signup
+// TODO login
+// TODO me A
+// TODO me/update-pass A
+// TODO user/:id/like A
+// TODO user/:id/unlike A
+// TODO user/:id
+// TODO most-liked
