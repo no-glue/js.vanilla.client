@@ -26,9 +26,11 @@ html
             var headerMe='Me';
             var headerUpdatepass='Update password';
             var initHash='#albums';
+            var listDivId='list';
+            var listDiv=null;
+            var classHidden='is-hidden';
 
             document.addEventListener('DOMContentLoaded', function(event){
-                window.location.hash=initHash;
                 console.log('document loaded');
                 routie({
                     'signup': function(){
@@ -80,6 +82,8 @@ html
                         items.appendChild(child);
                     },
                     'albums': function(){
+                        listDiv=document.getElementById(listDivId);
+                        listDiv.classList.remove(classHidden);
                         request.open('GET',endpoints['albums']);
                         request.send();
                         items=document.getElementById(itemsId);
@@ -158,6 +162,6 @@ html
                 div.col-2
                     div.card.is-borderless
                         a(href='#users') Users
-            div.row
+            div#list.is-hidden.row
                 div.col-12
                     ol#items
