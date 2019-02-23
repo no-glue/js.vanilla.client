@@ -170,4 +170,15 @@ html
                             p
                                 button#signupformsubmit.button.primary Submit
             div#loginform.row
-                div.col-12 loginform
+                div.col-12
+                    form#loginformform
+                        fieldset
+                            legend Login
+                            p
+                                label(for='loginformusername') Username
+                                input(id='loginformusername').
+                            p
+                                label(for='loginformpass') Passphrase
+                                input(id='loginformpass').
+                            p
+                                button#loginformsubmit.button.primary Submit
