@@ -106,6 +106,8 @@ html
                         }
                     },
                     'users': function(){
+                        listDiv=document.getElementById(listDivId);
+                        listDiv.classList.remove(classHidden);
                         request.open('GET',endpoints['users']);
                         request.send();
                         items=document.getElementById(itemsId);
