@@ -31,6 +31,7 @@ html
             var listDiv=null;
             var classHidden='is-hidden';
             var doHideClass='dohide';
+            var addHideClass='is-hidden';
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -38,6 +39,9 @@ html
                     'signup': function(){
                         items=document.getElementById(itemsId);
                         makeListEmpty(items);
+                        addClassToElements(
+                            document.getElementsByClassName(doHideClass),
+                        addHideClass);
                         header=document.getElementById(headerId);
                         header.innerText=headerSignup;
                         child=document.createElement('LI');
