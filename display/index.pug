@@ -10,6 +10,14 @@ html
                 "albums":"https://jsonplaceholder.typicode.com/albums",
                 "users":"https://jsonplaceholder.typicode.com/users"
             };
+            var urls={
+                "users":{
+                    "listDivId":"list",
+                    "itemsId":"items",
+                    "headerId":"header",
+                    "headerUsers":"Users"
+                }
+            };
             var request=new XMLHttpRequest();
             var limit=17;
             var parsed=null;
@@ -109,17 +117,17 @@ html
                         }
                     },
                     'users': function(){
-                        listDiv=document.getElementById(listDivId);
+                        listDiv=document.getElementById(urls.users.listDivId);
                         request.open('GET',endpoints['users']);
                         request.send();
-                        items=document.getElementById(itemsId);
+                        items=document.getElementById(urls.users.itemsId);
                         makeListEmpty(items);
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
                         listDiv.classList.remove(addHideClass);
-                        header=document.getElementById(headerId);
-                        header.innerText=headerUsers;
+                        header=document.getElementById(urls.users.headerId);
+                        header.innerText=urls.users.headerUsers;
                         request.onreadystatechange=function(){
                             if(this.status==200 && this.readyState==4){
                                 parsed=JSON.parse(request.responseText);
