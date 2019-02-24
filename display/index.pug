@@ -11,6 +11,11 @@ html
                 "users":"https://jsonplaceholder.typicode.com/users"
             };
             var urls={
+                "updatepass":{
+                    "headerId":"header",
+                    "headerUpdatepass":"Passphrase",
+                    "updatePassId":"passform"
+                },
                 "albums":{
                     "listDivId":"list",
                     "itemsId":"items",
@@ -92,9 +97,11 @@ html
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
-                        header=document.getElementById(headerId);
-                        header.innerText=headerUpdatepass;
-                        updatePassItem=document.getElementById(updatePassId);
+                        header=document.getElementById(urls.updatepass.headerId);
+                        header.innerText=urls.updatepass.headerUpdatepass;
+                        updatePassItem=document.getElementById(
+                            urls.updatepass.updatePassId
+                        );
                         updatePassItem.classList.remove(addHideClass);
                     },
                     'albums': function(){
