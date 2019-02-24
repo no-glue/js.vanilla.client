@@ -119,7 +119,7 @@ html
                         addHideClass);
                         listDiv.classList.remove(addHideClass);
                         header=document.getElementById(urls.albums.headerId);
-                        header.innerText=headerAlbums;
+                        header.innerText=urls.albums.headerAlbums;
                         request.onreadystatechange=function(){
                             if(this.status==200 && this.readyState==4){
                                 parsed=JSON.parse(request.responseText);
