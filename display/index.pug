@@ -11,6 +11,12 @@ html
                 "users":"https://jsonplaceholder.typicode.com/users"
             };
             var urls={
+                "me":{
+                        "itemsId":"items",
+                        "listDivId":"list",
+                        "headerId":"header",
+                        "headerMe":"Me"
+                },
                 "updatepass":{
                     "headerId":"header",
                     "headerUpdatepass":"Passphrase",
@@ -79,15 +85,15 @@ html
                         loginItem.classList.remove(addHideClass);
                     },
                     'me': function() {
-                        items=document.getElementById(itemsId);
+                        items=document.getElementById(urls.me.itemsId);
                         makeListEmpty(items);
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
-                        listDiv=document.getElementById(listDivId);
+                        listDiv=document.getElementById(urls.me.listDivId);
                         listDiv.classList.remove(addHideClass);
-                        header=document.getElementById(headerId);
-                        header.innerText=headerMe;
+                        header=document.getElementById(urls.me.headerId);
+                        header.innerText=urls.me.headerMe;
                         child=document.createElement('LI');
                         childTxt=document.createTextNode('Number of likes: 11');
                         child.appendChild(childTxt);
