@@ -11,6 +11,12 @@ html
                 "users":"https://jsonplaceholder.typicode.com/users"
             };
             var urls={
+                "albums":{
+                    "listDivId":"list",
+                    "itemsId":"items",
+                    "headerId":"header",
+                    "headerAlbums":"Albums"
+                },
                 "users":{
                     "listDivId":"list",
                     "itemsId":"items",
@@ -92,16 +98,16 @@ html
                         updatePassItem.classList.remove(addHideClass);
                     },
                     'albums': function(){
-                        listDiv=document.getElementById(listDivId);
+                        listDiv=document.getElementById(urls.albums.listDivId);
                         request.open('GET',endpoints['albums']);
                         request.send();
-                        items=document.getElementById(itemsId);
+                        items=document.getElementById(urls.albums.itemsId);
                         makeListEmpty(items);
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
                         listDiv.classList.remove(addHideClass);
-                        header=document.getElementById(headerId);
+                        header=document.getElementById(urls.albums.headerId);
                         header.innerText=headerAlbums;
                         request.onreadystatechange=function(){
                             if(this.status==200 && this.readyState==4){
