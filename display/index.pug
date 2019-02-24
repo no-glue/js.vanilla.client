@@ -11,6 +11,11 @@ html
                 "users":"https://jsonplaceholder.typicode.com/users"
             };
             var urls={
+                "login":{
+                        "headerId":"header",
+                        "headerLogin":"Login",
+                        "loginId":"loginform"
+                },
                 "me":{
                         "itemsId":"items",
                         "listDivId":"list",
@@ -79,9 +84,9 @@ html
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
-                        header=document.getElementById(headerId);
-                        header.innerText=headerLogin;
-                        loginItem=document.getElementById(loginId);
+                        header=document.getElementById(urls.login.headerId);
+                        header.innerText=urls.login.headerLogin;
+                        loginItem=document.getElementById(urls.login.loginId);
                         loginItem.classList.remove(addHideClass);
                     },
                     'me': function() {
