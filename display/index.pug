@@ -11,6 +11,11 @@ html
                 "users":"https://jsonplaceholder.typicode.com/users"
             };
             var urls={
+                "signup":{
+                        "headerId":"header",
+                        "headerSignup":"Signup",
+                        "signupId":"signupform"
+                },
                 "login":{
                         "headerId":"header",
                         "headerLogin":"Login",
@@ -75,9 +80,9 @@ html
                         addClassToElements(
                             document.getElementsByClassName(doHideClass),
                         addHideClass);
-                        header=document.getElementById(headerId);
-                        header.innerText=headerSignup;
-                        signupItem=document.getElementById(signupId);
+                        header=document.getElementById(urls.signup.headerId);
+                        header.innerText=urls.signup.headerSignup;
+                        signupItem=document.getElementById(urls.signup.signupId);
                         signupItem.classList.remove(addHideClass);
                     },
                     'login': function(){
