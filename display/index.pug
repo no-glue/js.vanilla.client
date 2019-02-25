@@ -15,7 +15,9 @@ html
                         "headerId":"header",
                         "headerSignup":"Signup",
                         "signupId":"signupform",
-                        "signupformsubmitId":"signupformsubmit"
+                        "signupformsubmitId":"signupformsubmit",
+                        "signupformstatusId":"signupformstatus",
+                        "signupformstatusGood":"Success."
                 },
                 "login":{
                         "headerId":"header",
@@ -62,6 +64,7 @@ html
             var loginItem=null;
             var updatePassItem=null;
             var signupformsubmitItem=null;
+            var signupformstatusItem=null;
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -77,7 +80,13 @@ html
                         signupformsubmitItem=document.getElementById(
                             urls.signup.signupformsubmitId
                         );
+                        signupformstatusItem=document.getElementById(
+                            urls.signup.signupformstatusId
+                        );
                         signupformsubmitItem.onclick=function(){
+                            signupformstatusItem.classList.add("success");
+                            signupformstatusItem.placeholder=
+                                urls.signup.signupformstatusGood;
                             console.log('signupformsubmitclick');
                         };
                     },
@@ -217,7 +226,7 @@ html
                                 input(id='signupformpass')
                             p
                                 label(for='signupformstatus') Status
-                                input(id='signupformstatus',disabled)
+                                input(id='signupformstatus',placeholder='Check signup status (leave blank).')
                             p
                                 button#signupformsubmit.button.primary Submit
             div#loginform.row.dohide
@@ -233,7 +242,7 @@ html
                                 input(id='loginformpass').
                             p
                                 label(for='loginformstatus') Status
-                                input(id='loginformstatus',disabled)
+                                input(id='loginformstatus')
                             p
                                 button#loginformsubmit.button.primary Submit
             div#passform.row.dohide
