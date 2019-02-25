@@ -28,3 +28,20 @@ var addClassToElements = function(list,clss){
         list[i].classList.add(clss);
     }
 }
+
+/**
+* listAppendNode
+*
+* append node to list
+*
+* lst - list to use
+* arr - array that contains values
+* callb - callback to use that actually appends node
+*
+**/
+var listAppendNode = function(lst,arr,callb){
+    var i=0;
+    for(;i<arr.length;i++){
+        callb(lst,arr[i]);
+    }
+}
