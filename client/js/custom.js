@@ -30,6 +30,23 @@ var addClassToElements = function(list,clss){
 }
 
 /**
+* removeClassFromElements
+*
+* remove some class to elements
+*
+* items - these have class removed
+*
+* clss - class to remove
+*
+**/
+var addClassToElements = function(list,clss){
+    var i=0;
+    for(;i<list.length;i++){
+        list[i].classList.remove(clss);
+    }
+}
+
+/**
 * listAppendNode
 *
 * append node to list
