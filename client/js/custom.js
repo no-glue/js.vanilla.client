@@ -39,7 +39,7 @@ var addClassToElements = function(list,clss){
 * clss - class to remove
 *
 **/
-var addClassToElements = function(list,clss){
+var removeClassFromElements = function(list,clss){
     var i=0;
     for(;i<list.length;i++){
         list[i].classList.remove(clss);

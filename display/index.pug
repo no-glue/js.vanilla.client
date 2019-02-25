@@ -84,7 +84,9 @@ html
                             urls.signup.signupformstatusId
                         );
                         signupformsubmitItem.onclick=function(){
-                            signupformstatusItem.classList.add("success");
+                            removeClassFromElements([signupformstatusItem],"error");
+                            removeClassFromElements([signupformstatusItem],"success");
+                            addClassToElements([signupformstatusItem],"success");
                             signupformstatusItem.placeholder=
                                 urls.signup.signupformstatusGood;
                             console.log('signupformsubmitclick');
