@@ -5,6 +5,7 @@ html
         link(rel='stylesheet',href='/css/custom.css').
         script(type='text/javascript',src='/js/routie.min.js').
         script(type='text/javascript',src='/js/custom.js').
+        script(type='text/javascript',src='/js/md5.js').
         script(type='text/javascript').
             var endpoints={
                 "albums":"https://jsonplaceholder.typicode.com/albums",
@@ -17,7 +18,9 @@ html
                         "signupId":"signupform",
                         "signupformsubmitId":"signupformsubmit",
                         "signupformstatusId":"signupformstatus",
-                        "signupformstatusGood":"Success."
+                        "signupformstatusGood":"Success.",
+                        "signupformusernameId":"signupformusername",
+                        "signupformpassId":"signupformpass"
                 },
                 "login":{
                         "headerId":"header",
@@ -65,6 +68,8 @@ html
             var updatePassItem=null;
             var signupformsubmitItem=null;
             var signupformstatusItem=null;
+            var signupformusernameItem=null;
+            var signupformpassItem=null;
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -83,13 +88,21 @@ html
                         signupformstatusItem=document.getElementById(
                             urls.signup.signupformstatusId
                         );
+                        signupformusernameItem=document.getElementById(
+                            urls.signup.signupformusernameId
+                        );
+                        signupformpassItem=document.getElementById(
+                            urls.signup.signupformpassId
+                        );
                         signupformsubmitItem.onclick=function(){
                             removeClassFromElements([signupformstatusItem],"error");
                             removeClassFromElements([signupformstatusItem],"success");
                             addClassToElements([signupformstatusItem],"success");
                             signupformstatusItem.placeholder=
                                 urls.signup.signupformstatusGood;
-                            console.log('signupformsubmitclick');
+                            console.log('signupformsubmitclick'
+                                +signupformusernameItem.value+','+
+                                signupformpassItem.value);
                         };
                     },
                     'login': function(){
