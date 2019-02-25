@@ -123,13 +123,14 @@ html
                         request.onreadystatechange=function(){
                             if(this.status==200 && this.readyState==4){
                                 parsed=JSON.parse(request.responseText);
-                                for(i=0;i<limit && i<parsed.length;i++){
-                                    child=document.createElement('LI');
-                                    childTxt=document.createTextNode('Title - '+parsed[i].title);
-                                    child.appendChild(childTxt);
-                                    items.appendChild(child);
-                                    console.log(parsed[i]);
-                                }
+                                listAppendNode(items,parsed,function(lst,item){
+                                    var chld=document.createElement('LI');
+                                    var chldTxt=document.createTextNode(
+                                        item.title+' (Title)'
+                                    );
+                                    chld.appendChild(chldTxt);
+                                    lst.appendChild(chld);
+                                });
                             }
                         }
                     },
