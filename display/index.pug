@@ -14,7 +14,8 @@ html
                 "signup":{
                         "headerId":"header",
                         "headerSignup":"Signup",
-                        "signupId":"signupform"
+                        "signupId":"signupform",
+                        "signupformsubmitId":"signupformsubmit"
                 },
                 "login":{
                         "headerId":"header",
@@ -60,6 +61,7 @@ html
             var signupItem=null;
             var loginItem=null;
             var updatePassItem=null;
+            var signupformsubmitItem=null;
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -72,6 +74,12 @@ html
                         header.innerText=urls.signup.headerSignup;
                         signupItem=document.getElementById(urls.signup.signupId);
                         signupItem.classList.remove(addHideClass);
+                        signupformsubmitItem=document.getElementById(
+                            urls.signup.signupformsubmitId
+                        );
+                        signupformsubmitItem.onclick=function(){
+                            console.log('signupformsubmitclick');
+                        };
                     },
                     'login': function(){
                         addClassToElements(
