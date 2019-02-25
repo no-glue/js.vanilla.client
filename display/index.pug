@@ -148,6 +148,9 @@ html
                         request.onreadystatechange=function(){
                             if(this.status==200 && this.readyState==4){
                                 parsed=JSON.parse(request.responseText);
+                                parsed.sort(function(a,b){
+                                    return (a.val.likes - b.val.likes)
+                                });
                                 for(i=0;i<limit && i<parsed.length;i++){
                                     child=document.createElement('LI');
                                     childTxt=document.createTextNode(
