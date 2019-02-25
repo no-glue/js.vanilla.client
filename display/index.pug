@@ -154,8 +154,8 @@ html
                                 for(i=0;i<limit && i<parsed.length;i++){
                                     child=document.createElement('LI');
                                     childTxt=document.createTextNode(
-                                        'Name - '+parsed[i].key+', Likes - '+
-                                        parsed[i].val.likes
+                                        parsed[i].key+' (Name), '+
+                                        parsed[i].val.likes+' (Likes)'
                                     );
                                     child.appendChild(childTxt);
                                     items.appendChild(child);
