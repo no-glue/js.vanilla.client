@@ -6,6 +6,7 @@ html
         script(type='text/javascript',src='/js/routie.min.js').
         script(type='text/javascript',src='/js/custom.js').
         script(type='text/javascript',src='/js/md5.js').
+        script(type='text/javascript',src='/js/sprintf.js').
         script(type='text/javascript').
             var endpoints={
                 "albums":"https://jsonplaceholder.typicode.com/albums",
@@ -102,7 +103,8 @@ html
                                 urls.signup.signupformstatusGood;
                             console.log('signupformsubmitclick'
                                 +signupformusernameItem.value+','+
-                                signupformpassItem.value);
+                                signupformpassItem.value+','+
+                                sprintf('name %(name)s',{name:"signup"}));
                         };
                     },
                     'login': function(){
