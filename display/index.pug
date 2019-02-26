@@ -10,7 +10,8 @@ html
         script(type='text/javascript').
             var endpoints={
                 "albums":"https://jsonplaceholder.typicode.com/albums",
-                "users":"http://localhost:3001/users"
+                "users":"http://localhost:3001/users",
+                "signupformurl":"http://localhost:3001/signup?uname=%(uname)s&pass=%(pass)s"
             };
             var urls={
                 "signup":{
@@ -21,8 +22,7 @@ html
                         "signupformstatusId":"signupformstatus",
                         "signupformstatusGood":"Success.",
                         "signupformusernameId":"signupformusername",
-                        "signupformpassId":"signupformpass",
-                        "signupformurl":"?uname=%(uname)s&pass=%(pass)s"
+                        "signupformpassId":"signupformpass"
                 },
                 "login":{
                         "headerId":"header",
@@ -72,6 +72,8 @@ html
             var signupformstatusItem=null;
             var signupformusernameItem=null;
             var signupformpassItem=null;
+            var signupformusernameTxt='';
+            var signupformpassTxt='';
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -100,12 +102,13 @@ html
                             removeClassFromElements([signupformstatusItem],"error");
                             removeClassFromElements([signupformstatusItem],"success");
                             addClassToElements([signupformstatusItem],"success");
+                            signupformusernameTxt=signupformusernameItem.value;
+                            signupformpassTxt=signupformpassItem.value;
+                            signupformpassTxt=md5(signupformpassTxt);
                             signupformstatusItem.placeholder=
                                 urls.signup.signupformstatusGood;
-                            console.log('signupformsubmitclick'
-                                +signupformusernameItem.value+','+
-                                signupformpassItem.value+','+
-                                sprintf('name %(name)s',{name:"signup"}));
+                            console.log('signupformsubmitclick',
+                                signupformusernameTxt,signupformpassTxt);
                         };
                     },
                     'login': function(){
