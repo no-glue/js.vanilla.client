@@ -74,6 +74,7 @@ html
             var signupformpassItem=null;
             var signupformusernameTxt='';
             var signupformpassTxt='';
+            var signupformreqTxt='';
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -105,8 +106,20 @@ html
                             signupformusernameTxt=signupformusernameItem.value;
                             signupformpassTxt=signupformpassItem.value;
                             signupformpassTxt=md5(signupformpassTxt);
-                            signupformstatusItem.placeholder=
-                                urls.signup.signupformstatusGood;
+                            signupformreqTxt=sprintf(endpoints.signupformurl,
+                                {
+                                    "uname":signupformusernameTxt,
+                                    "pass":signupformpassTxt
+                                }
+                            );
+                            request.open('GET',signupformreqTxt);
+                            request.send();
+                            request.onreadystatechange=function(){
+                                if(this.status==200 && this.readyState==4){
+                                    signupformstatusItem.placeholder=
+                                    urls.signup.signupformstatusGood;
+                                }
+                            }
                             console.log('signupformsubmitclick',
                                 signupformusernameTxt,signupformpassTxt);
                         };
