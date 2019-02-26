@@ -106,7 +106,6 @@ html
                             addClassToElements([signupformstatusItem],"success");
                             signupformusernameTxt=signupformusernameItem.value;
                             signupformpassTxt=signupformpassItem.value;
-                            signupformpassTxt=md5(signupformpassTxt);
                             signupformreqTxt=sprintf(endpoints.signupformurl,
                                 {
                                     "uname":signupformusernameTxt,
