@@ -21,6 +21,7 @@ html
                         "signupformsubmitId":"signupformsubmit",
                         "signupformstatusId":"signupformstatus",
                         "signupformstatusGood":"Success.",
+                        "signupformstatusBad":"Fail. Reason %(reason)s",
                         "signupformusernameId":"signupformusername",
                         "signupformpassId":"signupformpass"
                 },
@@ -118,6 +119,9 @@ html
                                 if(this.status==200 && this.readyState==4){
                                     signupformstatusItem.placeholder=
                                     urls.signup.signupformstatusGood;
+                                } else{
+                                    signupformstatusItem.placeholder=
+                                        urls.signup.signupformstatusBad;
                                 }
                             }
                             console.log('signupformsubmitclick',
