@@ -90,6 +90,7 @@ html
             var loginformusernameTxt='';
             var loginformpassTxt='';
             var loginformreqTxt='';
+            var loginformtokenTxt='';
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -189,6 +190,9 @@ html
                                 if(this.status==200 && this.readyState==4){
                                     loginformstatusItem.placeholder=
                                     urls.login.loginformstatusGood;
+                                    loginformtokenTxt=JSON.parse(
+                                        request.responseText
+                                    )["token"];
                                     addClassToElements(
                                         [loginformstatusItem],"success");
                                 } else{
