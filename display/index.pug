@@ -193,6 +193,8 @@ html
                                     loginformtokenTxt=JSON.parse(
                                         request.responseText
                                     )["token"];
+                                    console.log("loginformclick",
+                                        loginformtokenTxt);
                                     addClassToElements(
                                         [loginformstatusItem],"success");
                                 } else{
