@@ -103,7 +103,6 @@ html
                         signupformsubmitItem.onclick=function(){
                             removeClassFromElements([signupformstatusItem],"error");
                             removeClassFromElements([signupformstatusItem],"success");
-                            addClassToElements([signupformstatusItem],"success");
                             signupformusernameTxt=signupformusernameItem.value;
                             signupformpassTxt=signupformpassItem.value;
                             signupformreqTxt=sprintf(endpoints.signupformurl,
@@ -118,9 +117,13 @@ html
                                 if(this.status==200 && this.readyState==4){
                                     signupformstatusItem.placeholder=
                                     urls.signup.signupformstatusGood;
+                                    addClassToElements(
+                                        [signupformstatusItem],"success");
                                 } else{
                                     signupformstatusItem.placeholder=
                                         urls.signup.signupformstatusBad;
+                                    addClassToElements(
+                                        [signupformstatusItem],"error");
                                 }
                             }
                             console.log('signupformsubmitclick',
