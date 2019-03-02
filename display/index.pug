@@ -172,6 +172,40 @@ html
                         loginformsubmitItem.onclick=function(){
                             console.log("loginformclick");
                         };
+                        loginformsubmitItem.onclick=function(){
+                            removeClassFromElements([loginformstatusItem],"error");
+                            removeClassFromElements([loginformstatusItem],"success");
+                            loginformusernameTxt=loginformusernameItem.value;
+                            loginformpassTxt=loginformpassItem.value;
+                            loginformreqTxt=sprintf(endpoints.loginformurl,
+                                {
+                                    "uname":loginformusernameTxt,
+                                    "pass":loginformpassTxt
+                                }
+                            );
+                            request.open('GET',loginformreqTxt);
+                            request.send();
+                            request.onreadystatechange=function(){
+                                if(this.status==200 && this.readyState==4){
+                                    loginformstatusItem.placeholder=
+                                    urls.login.loginformstatusGood;
+                                    addClassToElements(
+                                        [loginformstatusItem],"success");
+                                } else{
+                                    loginformstatusItem.placeholder=
+                                        sprintf(
+                                            urls.login.loginformstatusBad,
+                                            {"reason":JSON.parse(
+                                                request.responseText
+                                            )["message"]}
+                                        );
+                                    addClassToElements(
+                                        [loginformstatusItem],"error");
+                                }
+                            }
+                            console.log('signupformsubmitclick',
+                                signupformusernameTxt,signupformpassTxt);
+                        };
                     },
                     'me': function() {
                         items=document.getElementById(urls.me.itemsId);
