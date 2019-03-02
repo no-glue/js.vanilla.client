@@ -125,7 +125,7 @@ html
                                             urls.signup.signupformstatusBad,
                                             {"reason":JSON.parse(
                                                 request.responseText
-                                            )}
+                                            )["message"]}
                                         );
                                     addClassToElements(
                                         [signupformstatusItem],"error");
