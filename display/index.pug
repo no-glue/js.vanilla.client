@@ -121,7 +121,12 @@ html
                                         [signupformstatusItem],"success");
                                 } else{
                                     signupformstatusItem.placeholder=
-                                        urls.signup.signupformstatusBad;
+                                        sprintf(
+                                            urls.signup.signupformstatusBad,
+                                            {"reason":JSON.parse(
+                                                request.responseText
+                                            )}
+                                        );
                                     addClassToElements(
                                         [signupformstatusItem],"error");
                                 }
