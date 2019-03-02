@@ -29,7 +29,13 @@ html
                 "login":{
                         "headerId":"header",
                         "headerLogin":"Login",
-                        "loginId":"loginform"
+                        "loginId":"loginform",
+                        "loginformsubmitId":"loginformsubmit",
+                        "loginformstatusId":"loginformstatus",
+                        "loginformstatusGood":"Success.",
+                        "loginformstatusBad":"Fail. Reason - %(reason)s.",
+                        "loginformusernameId":"loginformusername",
+                        "loginformpassId":"loginformpass"
                 },
                 "me":{
                         "itemsId":"items",
@@ -77,6 +83,13 @@ html
             var signupformusernameTxt='';
             var signupformpassTxt='';
             var signupformreqTxt='';
+            var loginformsubmitItem=null;
+            var loginformstatusItem=null;
+            var loginformusernameItem=null;
+            var loginformpassItem=null;
+            var loginformusernameTxt='';
+            var loginformpassTxt='';
+            var loginformreqTxt='';
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -144,6 +157,21 @@ html
                         header.innerText=urls.login.headerLogin;
                         loginItem=document.getElementById(urls.login.loginId);
                         loginItem.classList.remove(addHideClass);
+                        loginformsubmitItem=document.getElementById(
+                            urls.login.loginformsubmitId
+                        );
+                        loginformstatusItem=document.getElementById(
+                            urls.login.loginformstatusId
+                        );
+                        loginformusernameItem=document.getElementById(
+                            urls.login.loginformusernameId
+                        );
+                        loginformpassItem=document.getElementById(
+                            urls.login.loginformpassId
+                        );
+                        loginformsubmitItem.onclick=function(){
+                            console.log("loginformclick");
+                        };
                     },
                     'me': function() {
                         items=document.getElementById(urls.me.itemsId);
