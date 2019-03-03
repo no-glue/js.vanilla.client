@@ -48,7 +48,13 @@ html
                 "updatepass":{
                     "headerId":"header",
                     "headerUpdatepass":"Passphrase",
-                    "updatePassId":"passform"
+                    "updatePassId":"passform",
+                    "passformoldpassId":"passformoldpass",
+                    "passformpassId":"passformpass",
+                    "passformunameId":"passformuname",
+                    "passformtokenId":"passformtoken",
+                    "passformstatusId":"passformstatus",
+                    "passformsubmitId":"passformsubmit"
                 },
                 "albums":{
                     "listDivId":"list",
@@ -94,6 +100,12 @@ html
             var loginformreqTxt='';
             var loginformtokenTxt='';
             var meTxt='';
+            var passformoldpassItem=null;
+            var passformpassItem=null;
+            var passformunameItem=null;
+            var passformtokenItem=null;
+            var passformstatusItem=null;
+            var passformsubmitItem=null;
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
