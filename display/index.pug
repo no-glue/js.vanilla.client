@@ -275,14 +275,14 @@ html
                         passformsubmitItem=document.getElementById(
                             urls.updatepass.passformsubmitId
                         );
-                        passformTxt=sprintf(endpoints.passurl,{
-                            "oldpass":passformoldpassItem.value,
-                            "pass":passformpassItem.value,
-                            "uname":loginformusernameTxt,
-                            "token":loginformtokenTxt
-                        });
                         passformsubmitItem.onclick=function(){
-                            console.log('passformsubmitclick');
+                            passformTxt=sprintf(endpoints.passurl,{
+                                "oldpass":passformoldpassItem.value,
+                                "pass":passformpassItem.value,
+                                "uname":loginformusernameTxt,
+                                "token":loginformtokenTxt
+                            });
+                            console.log('passformsubmitclick',passformTxt);
                         };
                     },
                     'albums': function(){
