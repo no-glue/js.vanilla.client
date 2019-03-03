@@ -104,6 +104,7 @@ html
             var passformsubmitItem=null;
             var passformTxt='';
             // TODO uname token keep in hash after login
+            // TODO uname token alternative restore after refresh
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -282,6 +283,12 @@ html
                                 "uname":loginformusernameTxt,
                                 "token":loginformtokenTxt
                             });
+                            request.open('GET',passformTxt);
+                            request.send();
+                            request.onreadystatechange=function(){
+                                if(this.status==200 && this.readyState==4){
+                                }
+                            };
                             console.log('passformsubmitclick',passformTxt);
                         };
                     },
