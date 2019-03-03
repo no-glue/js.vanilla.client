@@ -51,8 +51,6 @@ html
                     "updatePassId":"passform",
                     "passformoldpassId":"passformoldpass",
                     "passformpassId":"passformpass",
-                    "passformunameId":"passformuname",
-                    "passformtokenId":"passformtoken",
                     "passformstatusId":"passformstatus",
                     "passformsubmitId":"passformsubmit"
                 },
@@ -102,10 +100,10 @@ html
             var meTxt='';
             var passformoldpassItem=null;
             var passformpassItem=null;
-            var passformunameItem=null;
-            var passformtokenItem=null;
             var passformstatusItem=null;
             var passformsubmitItem=null;
+            var passformTxt='';
+            // TODO uname token keep in hash after login
 
             document.addEventListener('DOMContentLoaded', function(event){
                 console.log('document loaded');
@@ -271,18 +269,21 @@ html
                         passformpassItem=document.getElementById(
                             urls.updatepass.passformpassId
                         );
-                        passformunameItem=document.getElementById(
-                            urls.updatepass.passformunameId
-                        );
-                        passformtokenItem=document.getElementById(
-                            urls.updatepass.passformtokenId
-                        );
                         passformstatusItem=document.getElementById(
                             urls.updatepass.passformstatusId
                         );
                         passformsubmitItem=document.getElementById(
                             urls.updatepass.passformsubmitId
                         );
+                        passformTxt=sprintf(endpoints.passurl,{
+                            "oldpass":passformoldpassItem.value,
+                            "pass":passformpassItem.value,
+                            "uname":loginformusernameTxt,
+                            "token":loginformtokenTxt
+                        });
+                        passformsubmitItem.onclick=function(){
+                            console.log('passformsubmitclick');
+                        };
                     },
                     'albums': function(){
                         listDiv=document.getElementById(urls.albums.listDivId);
