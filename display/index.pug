@@ -388,7 +388,11 @@ html
                                 label(for='passformpass') Current passphrase
                                 input(id='passformpass').
                             p
+                                input(type='hidden',id='passformuname').
+                            p
+                                input(type='hidden',id='passformtoken').
+                            p
                                 label(for='passformstatus') Status
-                                input(id='passformstatus', disabled)
+                                input(id='passformstatus', placeholder='Check update passphrase status (leave blank).')
                             p
                                 button#passformsubmit.button.primary Submit
