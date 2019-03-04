@@ -9,7 +9,6 @@ html
         script(type='text/javascript',src='/js/sprintf.js').
         script(type='text/javascript').
             var endpoints={
-                "albums":"https://jsonplaceholder.typicode.com/albums",
                 "users":"http://localhost:3001/users",
                 "signupformurl":"http://localhost:3001/signup?uname=%(uname)s&pass=%(pass)s",
                 "loginformurl":"http://localhost:3001/login?uname=%(uname)s&pass=%(pass)s",
@@ -55,12 +54,6 @@ html
                     "passformsubmitId":"passformsubmit",
                     "passformstatusGood":"Success",
                     "passformstatusBad":"Fail. Reason - %(reason)s."
-                },
-                "albums":{
-                    "listDivId":"list",
-                    "itemsId":"items",
-                    "headerId":"header",
-                    "headerAlbums":"Albums"
                 },
                 "users":{
                     "listDivId":"list",
@@ -308,32 +301,6 @@ html
                             };
                             console.log('passformsubmitclick',passformTxt);
                         };
-                    },
-                    'albums': function(){
-                        listDiv=document.getElementById(urls.albums.listDivId);
-                        request.open('GET',endpoints['albums']);
-                        request.send();
-                        items=document.getElementById(urls.albums.itemsId);
-                        makeListEmpty(items);
-                        addClassToElements(
-                            document.getElementsByClassName(doHideClass),
-                        addHideClass);
-                        listDiv.classList.remove(addHideClass);
-                        header=document.getElementById(urls.albums.headerId);
-                        header.innerText=urls.albums.headerAlbums;
-                        request.onreadystatechange=function(){
-                            if(this.status==200 && this.readyState==4){
-                                parsed=JSON.parse(request.responseText);
-                                listAppendNode(items,parsed,function(lst,item){
-                                    var chld=document.createElement('LI');
-                                    var chldTxt=document.createTextNode(
-                                        item.title+' (Title)'
-                                    );
-                                    chld.appendChild(chldTxt);
-                                    lst.appendChild(chld);
-                                });
-                            }
-                        }
                     },
                     'users': function(){
                         listDiv=document.getElementById(urls.users.listDivId);
