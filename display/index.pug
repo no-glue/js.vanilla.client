@@ -52,7 +52,9 @@ html
                     "passformoldpassId":"passformoldpass",
                     "passformpassId":"passformpass",
                     "passformstatusId":"passformstatus",
-                    "passformsubmitId":"passformsubmit"
+                    "passformsubmitId":"passformsubmit",
+                    "passformstatusGood":"Success",
+                    "passformstatusBad":"Fail. Reason %(reason)s"
                 },
                 "albums":{
                     "listDivId":"list",
@@ -277,6 +279,8 @@ html
                             urls.updatepass.passformsubmitId
                         );
                         passformsubmitItem.onclick=function(){
+                            removeClassFromElements([passformstatusItem],"error");
+                            removeClassFromElements([passformstatusItem],"success");
                             passformTxt=sprintf(endpoints.passurl,{
                                 "oldpass":passformoldpassItem.value,
                                 "pass":passformpassItem.value,
@@ -287,6 +291,19 @@ html
                             request.send();
                             request.onreadystatechange=function(){
                                 if(this.status==200 && this.readyState==4){
+                                    passformstatusItem.placeholder=urls.
+                                        updatepass.passformstatusGood;
+                                    addClassToElements([passformstatusItem],
+                                        "success");
+                                } else {
+                                    passformstatusItem.placeholder=sprintf(urls.
+                                        updatepass.passformstatusBad,{
+                                            "reason":JSON.parse(
+                                                request.responseText
+                                            )["message"]
+                                        });
+                                    addClassToElements([passformstatusItem],
+                                        "error");
                                 }
                             };
                             console.log('passformsubmitclick',passformTxt);
